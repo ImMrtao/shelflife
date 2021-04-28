@@ -4,17 +4,9 @@ body {
 	width: 100%;
 	height: 100%;
 }
-/* 计算器{
-	计算器居中显示；
-	最大宽度为页面总宽；
-	最大高度为页面总高；
-	子元素flex布局；
-	输入框固定高度；
-	键盘自适应占用剩余空白高度；
-	设置边框，并四周圆角；
-	隐藏子元素，防止溢出；
-	设置阴影
-} */
+/* 
+计算器{	
+*/
 #calc-container {
 	position: absolute;
 	top: 50%;
@@ -32,17 +24,13 @@ body {
 	overflow: hidden;
 	box-shadow: 5px 5px 15px #4d4d4efb, -5px -5px 15px #4d4d4efb;
 }
-/* 输入框区域 */
+/*
+ 表单
+ */
 #calc-container > #form-content {
 	background-color: #f3eaea;
 }
-/* 行{
-	每行间隔5px；
-	每行占100%宽度；
-	高度40px；
-	子元素flex布局；
-	子元素之间有间隔；
- } */
+/* 行 */
 #calc-container > #form-content > div {
 	margin-bottom: 5px;
 	width: 100%;
@@ -56,11 +44,6 @@ body {
 #calc-container > #form-content > div:first-child {
 	margin-top: 5px;
 }
-/* label{
-	宽度85px
-	label标题靠左，输入框靠右；
-	label后添加中文冒号；
-} */
 #calc-container > #form-content label {
 	width: 85px;
 	margin-left: 45px;
@@ -69,20 +52,26 @@ body {
 #calc-container > #form-content label::after {
 	content: "：";
 }
-/* 输入框{
-	宽度占每行45%；
-	每行靠右；
-	字体居中
-} */
+/*
+输入框
+*/
 #calc-container > #form-content .input-in {
 	width: 45%;
+	background-color: #fff;
 }
+#calc-container > #form-content .input-in > * {
+	border: none;
+	background-color: transparent;
+}
+/* 生产日期 */
 #calc-container > #form-content input#production {
 	color: #ff0000;
+	font-weight: 700;
 }
 
-/* 键盘区域 */
-/* 键盘 */
+/* 
+键盘区域
+ */
 #calc-container > #calc-keypad {
 	/* 自适应占用剩余空白高度 */
 	flex-grow: 1;
@@ -94,17 +83,7 @@ body {
 	border-width: 0px;
 	border-collapse: collapse;
 }
-/* 设置键盘每列宽度 */
-/* #calc-keypad table tr.row td {
-	width: 32%;
-} */
-/* 按键 {
-	设置行内块元素；
-	宽32%，高25%；
-	白色背景；
-	鼠标移入显示灰色背景；
-	按键字体居中；
-}*/
+/* 按键 */
 #calc-keypad table a {
 	display: inline-flex;
 	flex-direction: row;
