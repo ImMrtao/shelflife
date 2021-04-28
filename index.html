@@ -1,0 +1,56 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: @TAO
+ * @Date: 2021-03-09 01:59:22
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2021-04-26 10:56:53
+-->
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保质期计算器</title>
+    <!-- 外部资源文件 -->
+    <link rel="stylesheet" href="css/base.css?v=v0.1.0">
+    <!--设置ico图标-->
+    <!-- https://icons.bootcss.com/icons/calculator.svg -->
+    <link rel="icon" type="image/svg" sizes="144x144" href="img/calc.svg" />
+    <!-- 内联样式 -->
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        iframe#calc-wrap {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <iframe id="calc-wrap" src="" frameborder="0" seamless></iframe>
+</body>
+<script>
+    // 等待页面加载完成
+    window.addEventListener("load", function () {
+        //获取iframe框架
+        var calcbox = document.querySelector("iframe#calc-wrap");
+        //获取当前毫秒值
+        var time = new Date();
+        //使用毫秒值作为链接参数，获取最新页面
+        calcbox.setAttribute("src", "calc.html?t=" + time.getTime());
+    });
+</script>
+
+</html>

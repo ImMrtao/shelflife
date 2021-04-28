@@ -1,0 +1,165 @@
+html,
+body {
+	/* 设置浏览器窗口大小 */
+	width: 100%;
+	height: 100%;
+}
+/* 计算器{
+	计算器居中显示；
+	最大宽度为页面总宽；
+	最大高度为页面总高；
+	子元素flex布局；
+	输入框固定高度；
+	键盘自适应占用剩余空白高度；
+	设置边框，并四周圆角；
+	隐藏子元素，防止溢出；
+	设置阴影
+} */
+#calc-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	display: flex;
+	flex-direction: column;
+	transform: translate(-50%, -50%);
+	width: 380px;
+	max-width: 100vw;
+	height: 600px;
+	max-height: 100vh;
+	background-color: #0b4d4d;
+	border: 5px solid transparent;
+	border-radius: 1rem;
+	overflow: hidden;
+	box-shadow: 5px 5px 15px #4d4d4efb, -5px -5px 15px #4d4d4efb;
+}
+/* 输入框区域 */
+#calc-container > #form-content {
+	background-color: #f3eaea;
+}
+/* 行{
+	每行间隔5px；
+	每行占100%宽度；
+	高度40px；
+	子元素flex布局；
+	子元素之间有间隔；
+ } */
+#calc-container > #form-content > div {
+	margin-bottom: 5px;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+/* 给第一行添加margin-top */
+#calc-container > #form-content > div:first-child {
+	margin-top: 5px;
+}
+/* label{
+	宽度85px
+	label标题靠左，输入框靠右；
+	label后添加中文冒号；
+} */
+#calc-container > #form-content label {
+	width: 85px;
+	margin-left: 45px;
+	margin-right: 20px;
+}
+#calc-container > #form-content label::after {
+	content: "：";
+}
+/* 输入框{
+	宽度占每行45%；
+	每行靠右；
+	字体居中
+} */
+#calc-container > #form-content .input-in {
+	width: 45%;
+}
+#calc-container > #form-content input#production {
+	color: #ff0000;
+}
+
+/* 键盘区域 */
+/* 键盘 */
+#calc-container > #calc-keypad {
+	/* 自适应占用剩余空白高度 */
+	flex-grow: 1;
+	background-color: #63ddb8;
+}
+#calc-container > #calc-keypad table {
+	width: 100%;
+	height: 100%;
+	border-width: 0px;
+	border-collapse: collapse;
+}
+/* 设置键盘每列宽度 */
+/* #calc-keypad table tr.row td {
+	width: 32%;
+} */
+/* 按键 {
+	设置行内块元素；
+	宽32%，高25%；
+	白色背景；
+	鼠标移入显示灰色背景；
+	按键字体居中；
+}*/
+#calc-keypad table a {
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+}
+/* 按键字体：居中显示 */
+#calc-keypad table a > span {
+	display: inline-block;
+}
+
+#calc-keypad table a:hover {
+	background-color: #d3d3d3;
+	outline: lightgrey solid;
+}
+
+/* 消息 */
+#msg-box {
+	position: relative;
+	min-width: 100px;
+	max-width: 380px;
+	height: 3rem;
+	/* background-color: transparent; */
+	text-align: center;
+	font-weight: 900;
+	transition: 0.5s margin;
+	margin-top: -3rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+.msg-show {
+	margin-top: 0 !important;
+}
+#msg-box .msg {
+	background-color: green;
+	color: #f00;
+	height: 3rem;
+	line-height: 3rem;
+	z-index: 100;
+}
+#msg-box .ok {
+	background-color: green;
+	color: #fff;
+}
+#msg-box .err {
+	background-color: #f00;
+	color: #fff;
+}
+#msg-box .info {
+	background-color: orange;
+	color: #fff;
+}
+/* 
+响应式布局
+ */
