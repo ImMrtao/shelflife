@@ -4,7 +4,7 @@
  * @Author: @TAO
  * @Date: 2021-03-06 12:09:56
  * @LastEditors: sueRimn
- * @LastEditTime: 2021-04-27 10:22:14
+ * @LastEditTime: 2021-04-28 13:12:44
  */
 
 import { dateFormat, showMsg } from "../module/util.js";
@@ -52,7 +52,7 @@ window.addEventListener("load", function () {
 			//逻辑处理
 			const element = data.elem;
 			category = Number.parseInt(element.value);//修改商品品类代码
-			const msg = '切换为' + (category == 1 ? '常规' : '酸奶');
+			const msg = '切换为' + (category == 1 ? '常温' : '冷藏');
 			// layer.msg(`修改了商品品类为${data.value}`);
 			showMsg(msg, 'ok', msgBox);
 			//重新计算
