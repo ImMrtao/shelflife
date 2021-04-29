@@ -75,7 +75,7 @@ body {
 #calc-container > #calc-keypad {
 	/* 自适应占用剩余空白高度 */
 	flex-grow: 1;
-	background-color: #63ddb8;
+	background-color: #fff;
 }
 #calc-container > #calc-keypad table {
 	width: 100%;
@@ -101,6 +101,11 @@ body {
 #calc-keypad table a:hover {
 	background-color: #d3d3d3;
 	outline: lightgrey solid;
+}
+/* 删除按键 */
+.del-btn {
+	color: #fff;
+	background-color: #ff000096 !important;
 }
 
 /* 消息 */
