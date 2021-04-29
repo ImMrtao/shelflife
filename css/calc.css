@@ -57,11 +57,6 @@ body {
 */
 #calc-container > #form-content .input-in {
 	width: 45%;
-	background-color: #fff;
-}
-#calc-container > #form-content .input-in > * {
-	border: none;
-	background-color: transparent;
 }
 /* 生产日期 */
 #calc-container > #form-content input#production {
@@ -132,7 +127,10 @@ body {
 }
 .msg-close {
 	float: right;
-	margin-right: 15px;
+	width: 10%;
+}
+.msg-close:hover {
+	background-color: red;
 }
 .msg-show {
 	margin-top: 0 !important;
