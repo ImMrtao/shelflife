@@ -4,7 +4,7 @@
  * @Author: @TAO
  * @Date: 2021-04-26 10:50:12
  * @LastEditors: sueRimn
- * @LastEditTime: 2021-04-27 12:17:15
+ * @LastEditTime: 2021-04-29 15:14:39
  */
 /**
  * 格式化日期
@@ -39,13 +39,25 @@ function formatNumber(num) {
  */
 function showMsg(msg, type, container) {
     //弹出信息
-    container.classList.add('msg-show');
-    container.innerHTML = `<h4 class='msg ${type}'>${msg}</h4>`;
+    let eleMsg = document.createElement('h4');//消息
+    let closeMsg = document.createElement('span');
+    //设置消息
+    eleMsg.classList.add('msg', `${type}`);
+    eleMsg.innerHTML = msg;
+    //设置关闭按钮
+    closeMsg.innerHTML = '×';
+    closeMsg.classList.add('msg-close');
+    eleMsg.appendChild(closeMsg);
+    container.appendChild(eleMsg);
+    eleMsg.classList.add('msg-show');
     // 3秒后隐藏信息
     setTimeout(() => {
-        container.classList.remove('msg-show');
+        eleMsg.classList.remove('msg-show');
+        setTimeout(() => {
+            eleMsg.remove();
+        }, 200);//200毫秒之后删除这条消息
     }, 3000);
-    return;
+
 }
 
 //对外暴露接口

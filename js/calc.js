@@ -4,7 +4,7 @@
  * @Author: @TAO
  * @Date: 2021-03-06 12:09:56
  * @LastEditors: sueRimn
- * @LastEditTime: 2021-04-29 04:52:27
+ * @LastEditTime: 2021-04-29 15:10:18
  */
 
 import { dateFormat, showMsg } from "../module/util.js";
@@ -73,6 +73,16 @@ window.addEventListener("load", function () {
 			showMsg(msg, 'ok', msgBox);
 			//重新计算
 			calc();
+		});
+
+		//关闭消息
+		document.querySelector('#msg-box').addEventListener('click', function (event) {
+			if (event.target.className == 'msg-close') {//如果是单击了关闭按钮，关闭当前消息
+				event.target.parentElement.classList.remove('msg-show');
+				setTimeout(() => {
+					event.target.parentElement.remove();
+				}, 200);
+			}
 		});
 	});
 
