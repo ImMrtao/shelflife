@@ -4,7 +4,7 @@
  * @Author: @TAO
  * @Date: 2021-04-26 10:50:12
  * @LastEditors: sueRimn
- * @LastEditTime: 2021-04-29 15:29:23
+ * @LastEditTime: 2021-05-06 11:15:41
  */
 /**
  * 格式化日期
@@ -37,26 +37,31 @@ function formatNumber(num) {
  * @param {String} type 消息类别 ok提示执行结果，err错误提示，info提示建议
  * @param {Object} container 显示消息的容器
  */
-function showMsg(msg, type, container) {
+function showMsg(msg, type, fn) {
     //弹出信息
-    let eleMsg = document.createElement('h4');//消息
-    let closeMsg = document.createElement('span');
-    //设置消息
-    eleMsg.classList.add('msg', `${type}`);
-    eleMsg.innerHTML = msg;
-    //设置关闭按钮
-    closeMsg.innerHTML = '×';
-    closeMsg.classList.add('msg-close');
-    eleMsg.appendChild(closeMsg);
-    container.appendChild(eleMsg);
-    eleMsg.classList.add('msg-show');
-    // 3秒后隐藏信息
-    setTimeout(() => {
-        eleMsg.classList.remove('msg-show');
-        setTimeout(() => {
-            eleMsg.remove();
-        }, 200);//200毫秒之后删除这条消息
-    }, 3000);
+    // let eleMsg = document.createElement('h4');//消息
+    // let closeMsg = document.createElement('span');
+    // //设置消息
+    // eleMsg.classList.add('msg', `${type}`);
+    // eleMsg.innerHTML = msg;
+    // //设置关闭按钮
+    // closeMsg.innerHTML = '×';
+    // closeMsg.classList.add('msg-close');
+    // eleMsg.appendChild(closeMsg);
+    // container.appendChild(eleMsg);
+    // eleMsg.classList.add('msg-show');
+    // // 3秒后隐藏信息
+    // setTimeout(() => {
+    //     eleMsg.classList.remove('msg-show');
+    //     setTimeout(() => {
+    //         eleMsg.remove();
+    //     }, 200);//200毫秒之后删除这条消息
+    // }, 3000);
+    fn(msg, {
+        icon: 1
+        // ,
+        // time: 2000 //2秒关闭（如果不配置，默认是3秒）
+    });
 
 }
 

@@ -4,7 +4,7 @@
  * @Author: @TAO
  * @Date: 2021-03-06 12:09:56
  * @LastEditors: sueRimn
- * @LastEditTime: 2021-04-29 15:10:18
+ * @LastEditTime: 2021-05-06 11:11:03
  */
 
 import { dateFormat, showMsg } from "../module/util.js";
@@ -59,7 +59,7 @@ window.addEventListener("load", function () {
 				'30': '月',
 				'365': '年'
 			}
-			showMsg('切换为' + msg[timeUnit], 'ok', msgBox);
+			showMsg('切换为' + msg[timeUnit], 'ok', layer.msg);
 			//重新计算
 			calc();
 		});
@@ -70,7 +70,7 @@ window.addEventListener("load", function () {
 			category = Number.parseInt(element.value);//修改商品品类代码
 			const msg = '切换为' + (category == 1 ? '常温' : '冷藏');
 			// layer.msg(`修改了商品品类为${data.value}`);
-			showMsg(msg, 'ok', msgBox);
+			showMsg(msg, 'ok', layer.msg);
 			//重新计算
 			calc();
 		});
