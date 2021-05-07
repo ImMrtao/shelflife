@@ -25,12 +25,13 @@ import { dateFormat, showMsg } from "../module/util.js";
 //变量
 let today; //当前日期
 let shelfLife; //保质期
+let currentInput;
 let timeUnit = 1;//时间单位【年，月，日】
 let resBox;//显示计算结果
 let msgBox;//消息盒子
 let keypad;//键盘
 let delBtn;
-let category = 1; //商品品类代码[1:常规/面包；2：酸奶]
+let fallbackday = document.querySelector("#fallbackday"); //回减提前天数
 let now = new Date(); //创建当前日期对象
 
 // 页面加载函数
@@ -38,6 +39,7 @@ window.addEventListener("load", function () {
 	//获取页面dom元素
 	today = document.querySelector("input#today");
 	shelfLife = document.querySelector("input#shelf-life"); //保质期
+	currentInput = shelfLife;
 	resBox = document.querySelectorAll("#form-content input#production")[0];//显示计算结果
 	keypad = document.querySelector("#calc-keypad");//键盘
 	msgBox = document.querySelector("#msg-box");//消息盒子
@@ -80,8 +82,8 @@ window.addEventListener("load", function () {
 		form.on('select(category)', function (data) {
 			//逻辑处理
 			const element = data.elem;
-			category = Number.parseInt(element.value);//修改商品品类代码
-			const msg = '切换为' + (category == 1 ? '常温' : '冷藏');
+			fallbackday = Number.parseInt(element.value);//修改商品品类代码
+			const msg = '切换为' + (fallbackday == 1 ? '常温' : '冷藏');
 			// layer.msg(`修改了商品品类为${data.value}`);
 			// showMsg(msg, 'ok', layer.msg);
 			//重新计算
@@ -89,14 +91,14 @@ window.addEventListener("load", function () {
 		});
 
 		//关闭消息
-		document.querySelector('#msg-box').addEventListener('click', function (event) {
-			if (event.target.className == 'msg-close') {//如果是单击了关闭按钮，关闭当前消息
-				event.target.parentElement.classList.remove('msg-show');
-				setTimeout(() => {
-					event.target.parentElement.remove();
-				}, 200);
-			}
-		});
+		// document.querySelector('#msg-box').addEventListener('click', function (event) {
+		// 	if (event.target.className == 'msg-close') {//如果是单击了关闭按钮，关闭当前消息
+		// 		event.target.parentElement.classList.remove('msg-show');
+		// 		setTimeout(() => {
+		// 			event.target.parentElement.remove();
+		// 		}, 200);
+		// 	}
+		// });
 	});
 
 	// 初始化当前日期
@@ -108,17 +110,27 @@ window.addEventListener("load", function () {
 		let classNames = element.getAttribute("class");//element的class属性
 		classNames = ["", null].includes(classNames) ? element.parentElement.getAttribute("class") : classNames;
 		if (["SPAN", "A"].includes(element.nodeName) && classNames.includes("num-btn")) {//数字按键
-			var str = String(shelfLife.value) + String(element.innerText);
-			shelfLife.value = Number.parseInt(str);
+			var str = String(currentInput.value) + String(element.innerText);
+			currentInput.value = Number.parseInt(str);
 			calc();
 		}
 	});
 
 	//删除保质期
 	delBtn.addEventListener("click", function () {
-		shelfLife.value = "";
+		currentInput.value = "";
 		resBox.value = "";
+		calc();
 	})
+
+	//切换输入框
+	document.querySelector("#form-content").addEventListener("click", function (event) {
+		if (["shelf-life", "fallbackday"].includes(event.target.id)) {
+			document.querySelector(".isfocus").classList.remove("isfocus");
+			currentInput = document.querySelector(`#${event.target.id}`);
+			currentInput.classList.add("isfocus");
+		}
+	});
 
 });
 
@@ -127,16 +139,19 @@ window.addEventListener("load", function () {
  * @returns 计算结果
  */
 function calc() {
-	let dayLength = shelfLife.value * timeUnit; //保质期天数
+	// let currentInput = document.querySelector("input:focus");
+	let days = shelfLife.value * timeUnit; //天数
 	//无效保质期
-	if ([null, undefined, "", 0].includes(dayLength)) {
+	if ([null, undefined, "", 0].includes(days)) {
 		return;
-	} else if (dayLength < 2) {
+	} else if (days < 2) {
 		//showMsg('保质期应>=2', 'err', msgBox);
+		return;
+	} else if (Number.parseInt(fallbackday.value) >= days) {
 		return;
 	}
 	//计算生产日期
-	let date = new Date(now.getTime() - (dayLength - category) * 86400000);
+	let date = new Date(now.getTime() - (days - 1 - fallbackday.value) * 86400000);
 	resBox.value = dateFormat(date);
 }
 

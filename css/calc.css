@@ -30,6 +30,9 @@ body {
 #calc-container > #form-content {
 	background-color: #f3eaea;
 }
+#calc-container > #form-content * {
+	cursor: default;
+}
 /* 行 */
 #calc-container > #form-content > div {
 	margin-bottom: 5px;
@@ -58,6 +61,11 @@ body {
 #calc-container > #form-content .input-in {
 	width: 45%;
 }
+/* #calc-container > #form-content input:focus, */
+.isfocus {
+	outline: #82cdd6 solid 0.5px !important;
+}
+
 /* 生产日期 */
 #calc-container > #form-content input#production {
 	color: #ff0000;
