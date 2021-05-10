@@ -1,0 +1,59 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#outbox {
+	perspective: 1200px;
+}
+/* 计算器3d场景 */
+#calc-container {
+	/* 相对定位 */
+	position: relative;
+	transition: 0.5s transform;
+	transform-style: preserve-3d;
+}
+.reverse {
+	transform: rotateY(180deg);
+}
+/* 计算器大小 */
+#outbox,
+#calc-container,
+#calc-container > * {
+	width: 380px;
+	max-width: 100vw;
+	height: 600px;
+	max-height: 100vh;
+}
+
+#calc-container > .calc {
+	position: absolute;
+	top: 0;
+	left: 0;
+	/* 背向用户面不可见 */
+	backface-visibility: hidden;
+}
+
+/* 正面 */
+.calc.front {
+	z-index: 5;
+}
+
+/* 反面 */
+/* 反面旋转180° */
+.calc.back {
+	transform: rotateY(180deg);
+}
+
+/* 切换按钮 */
+.panel-change {
+	margin-top: 15px;
+}

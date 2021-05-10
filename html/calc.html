@@ -1,0 +1,96 @@
+<div class="calc front">
+    <div class="form layui-form">
+        <!-- 表单区域 -->
+        <div>
+            <!-- 当前日期 -->
+            <label for="basedate">当前日期</label>
+            <div class="layui-input-inline input-in">
+                <input type="text" class="basedate layui-input" placeholder="yyyy-MM-dd" readonly>
+            </div>
+        </div>
+        <div>
+            <!-- 保质期 -->
+            <label for="shelflife">保质期</label>
+            <div class="input-in" style="display: flex;flex-direction: row;justify-content: flex-end;">
+                <div class="layui-input-inline input-in" style="flex-grow: 1;">
+                    <input type="number" class="shelflife layui-input isfocus" readonly="readonly" placeholder="输入保质期">
+                </div>
+                <div class="layui-input-inline input-in" style="width: 55px;">
+                    <select name="time-unit" class="time-unit" lay-filter="front-time-unit">
+                        <option value="1" selected>日</option>
+                        <option value="30">月</option>
+                        <option value="365">年</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label for="production">生产日期</label>
+            <div class="layui-input-inline input-in">
+                <input class="result-input layui-input" type="date" readonly>
+            </div>
+        </div>
+        <div>
+            <label for="fallbackday">提前天数</label>
+            <div class="layui-input-inline input-in">
+                <input type="text" class="fallbackday layui-input" name="title" autocomplete="off" readonly>
+            </div>
+        </div>
+    </div>
+    <div class="keypad">
+        <!-- 键盘区域 -->
+        <table border="0">
+            <tbody>
+                <tr class="row">
+                    <td>
+                        <a class="num-btn" href="javascript:void(0);"><span>7</span>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="num-btn" href="javascript:void(0);"><span>8</span>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="num-btn" href="javascript:void(0);"><span>9</span>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td><a class="num-btn" href="javascript:void(0);"><span>4</span></a></td>
+                    <td><a class="num-btn" href="javascript:void(0);"><span>5</span></a></td>
+                    <td><a class="num-btn" href="javascript:void(0);"><span>6</span></a></td>
+                </tr>
+                <tr class="row">
+                    <td>
+                        <a class="num-btn" href="javascript:void(0);">
+                            <span>1</span>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="num-btn" href="javascript:void(0);"><span>2</span>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="num-btn" href="javascript:void(0);"><span>3</span>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td colspan="2">
+                        <a class="num-btn" href="javascript:void(0);">
+                            <span>0</span>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="fn-btn del-btn" href="javascript:void(0);">
+                            <span style="font-weight: 700;">
+                                <!-- <div></div> -->
+                                ×
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

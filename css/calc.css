@@ -1,23 +1,10 @@
-html,
-body {
-	/* 设置浏览器窗口大小 */
-	width: 100%;
-	height: 100%;
-}
 /* 
 计算器{	
 */
-#calc-container {
+.calc {
 	position: absolute;
-	top: 50%;
-	left: 50%;
 	display: flex;
 	flex-direction: column;
-	transform: translate(-50%, -50%);
-	width: 380px;
-	max-width: 100vw;
-	height: 600px;
-	max-height: 100vh;
 	background-color: #0b4d4d;
 	border: 5px solid transparent;
 	border-radius: 1rem;
@@ -27,14 +14,14 @@ body {
 /*
  表单
  */
-#calc-container > #form-content {
+.calc > .form {
 	background-color: #f3eaea;
 }
-#calc-container > #form-content * {
+.calc > .form * {
 	cursor: default;
 }
 /* 行 */
-#calc-container > #form-content > div {
+.calc > .form > div {
 	margin-bottom: 5px;
 	width: 100%;
 	height: 40px;
@@ -44,30 +31,30 @@ body {
 	justify-content: flex-start;
 }
 /* 给第一行添加margin-top */
-#calc-container > #form-content > div:first-child {
+.calc > .form > div:first-child {
 	margin-top: 5px;
 }
-#calc-container > #form-content label {
+.calc > .form label {
 	width: 85px;
 	margin-left: 45px;
 	margin-right: 20px;
 }
-#calc-container > #form-content label::after {
+.calc > .form label::after {
 	content: "：";
 }
 /*
 输入框
 */
-#calc-container > #form-content .input-in {
+.calc > .form .input-in {
 	width: 45%;
 }
-/* #calc-container > #form-content input:focus, */
+/* .calc > .form input:focus, */
 .isfocus {
-	outline: #82cdd6 solid 0.5px !important;
+	outline: #168e9c solid 0.5px !important;
 }
 
 /* 生产日期 */
-#calc-container > #form-content input#production {
+.calc > .form input.production {
 	color: #ff0000;
 	font-weight: 700;
 }
@@ -75,19 +62,19 @@ body {
 /* 
 键盘区域
  */
-#calc-container > #calc-keypad {
+.calc > .keypad {
 	/* 自适应占用剩余空白高度 */
 	flex-grow: 1;
 	background-color: #fff;
 }
-#calc-container > #calc-keypad table {
+.calc > .keypad table {
 	width: 100%;
 	height: 100%;
 	border-width: 0px;
 	border-collapse: collapse;
 }
 /* 按键 */
-#calc-keypad table a {
+.keypad table a {
 	display: inline-flex;
 	flex-direction: row;
 	justify-content: center;
@@ -97,11 +84,11 @@ body {
 	background-color: #fff;
 }
 /* 按键字体：居中显示 */
-#calc-keypad table a > span {
+.keypad table a > span {
 	display: inline-block;
 }
 
-#calc-keypad table a:hover {
+.keypad table a:hover {
 	background-color: #d3d3d3;
 	outline: lightgrey solid;
 }
