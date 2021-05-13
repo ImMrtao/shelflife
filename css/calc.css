@@ -1,6 +1,4 @@
-/* 
-计算器{	
-*/
+/*计算器*/
 .calc {
 	position: absolute;
 	display: flex;
@@ -11,9 +9,7 @@
 	overflow: hidden;
 	box-shadow: 5px 5px 15px #4d4d4efb, -5px -5px 15px #4d4d4efb;
 }
-/*
- 表单
- */
+/*表单 */
 .calc > .form {
 	background-color: #f3eaea;
 }
@@ -42,13 +38,10 @@
 .calc > .form label::after {
 	content: "：";
 }
-/*
-输入框
-*/
+/*输入框*/
 .calc > .form .input-in {
 	width: 45%;
 }
-/* .calc > .form input:focus, */
 .isfocus {
 	outline: #168e9c solid 0.5px !important;
 }
@@ -72,6 +65,12 @@
 	height: 100%;
 	border-width: 0px;
 	border-collapse: collapse;
+	table-layout: fixed;
+}
+/* 设置键盘列  */
+.calc > .keypad table th,
+.calc > .keypad table td {
+	width: 33%;
 }
 /* 按键 */
 .keypad table a {

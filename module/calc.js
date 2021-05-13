@@ -10,10 +10,11 @@ import { dateFormat } from "./util.js"
  * @param {Element} resBox 显示结果
  * @param {Element} keypad 键盘
  * @param {Element} delBtn 删除按钮
+ * @param {Element} calcBtn 计算按钮
  * @param {Element} fallbackday 提前天数
  * @param {Date} now 当前时间
  */
-function Calc(calc, basedate, shelfLife, currentInput, shelflifeField, resBox, keypad, delBtn, fallbackday, now, mode) {
+function Calc(calc, basedate, shelfLife, currentInput, shelflifeField, resBox, keypad, delBtn, calcBtn, fallbackday, now, mode) {
     this.calc = calc;
     this.basedate = basedate;
     this.shelfLife = shelfLife;
@@ -22,6 +23,7 @@ function Calc(calc, basedate, shelfLife, currentInput, shelflifeField, resBox, k
     this.resBox = resBox;
     this.keypad = keypad;
     this.delBtn = delBtn;
+    this.calcBtn = calcBtn;
     this.fallbackday = fallbackday;
     this.now = now;
     this.mode = mode;
@@ -38,7 +40,8 @@ Calc.prototype.events = function () {
         if (["SPAN", "A"].includes(btn.nodeName) && classNames.includes("num-btn")) {//数字按键
             var str = String(currentInput.value) + String(btn.innerText);
             currentInput.value = Number.parseInt(str);
-            _this.calculation();
+            //_this.calculation();
+            _this.calcBtn.style.backgroundColor = "#58b95c";
         }
     });
 
@@ -59,6 +62,16 @@ Calc.prototype.events = function () {
         _this.resBox.value = "";
         _this.calculation();
     });
+
+    /**
+     * 计算按钮
+     */
+    this.calcBtn.addEventListener("click", function () {
+        _this.calculation();
+        _this.calcBtn.style.backgroundColor = "white";
+    });
+
+
 }
 
 Calc.prototype.calculation = function () {
@@ -88,6 +101,7 @@ function getData(calcSelector) {
         resBox: document.querySelector(`${calcSelector} .result-input`),
         keypad: document.querySelector(`${calcSelector} .keypad`),
         delBtn: document.querySelector(`${calcSelector} .fn-btn.del-btn`),
+        calcBtn: document.querySelector(`${calcSelector} .calc-btn`),
         fallbackday: document.querySelector(`${calcSelector} .fallbackday`),
         now: new Date()
     };
@@ -102,7 +116,7 @@ function getData(calcSelector) {
 function createCalc(calcSelector) {
     let calcData = getData(calcSelector);
     let mode = calcSelector === ".calc.front" ? 1 : -1;
-    return new Calc(calcData.calc, calcData.basedate, calcData.shelflife, calcData.currentInput, 1, calcData.resBox, calcData.keypad, calcData.delBtn, calcData.fallbackday, new Date(), mode);
+    return new Calc(calcData.calc, calcData.basedate, calcData.shelflife, calcData.currentInput, 1, calcData.resBox, calcData.keypad, calcData.delBtn, calcData.calcBtn, calcData.fallbackday, new Date(), mode);
 }
 
 export { Calc, getData, createCalc };

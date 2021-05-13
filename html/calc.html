@@ -5,7 +5,7 @@
             <!-- 当前日期 -->
             <label for="basedate">当前日期</label>
             <div class="layui-input-inline input-in">
-                <input type="text" class="basedate layui-input" placeholder="yyyy-MM-dd" readonly>
+                <input type="text" class="basedate layui-input" placeholder="YYYY-MM-DD" readonly>
             </div>
         </div>
         <div>
@@ -27,7 +27,7 @@
         <div>
             <label for="production">生产日期</label>
             <div class="layui-input-inline input-in">
-                <input class="result-input layui-input" type="date" readonly>
+                <input class="result-input layui-input" type="date" style="color: red;" readonly>
             </div>
         </div>
         <div>
@@ -76,7 +76,12 @@
                     </td>
                 </tr>
                 <tr class="row">
-                    <td colspan="2">
+                    <td>
+                        <a class="fn-btn calc-btn" href="javascript:void(0);">
+                            <span>计算</span>
+                        </a>
+                    </td>
+                    <td>
                         <a class="num-btn" href="javascript:void(0);">
                             <span>0</span>
                         </a>
